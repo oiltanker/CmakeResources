@@ -1,4 +1,4 @@
-# CmakeResources (`version 1.0.0`)
+# CmakeResources
 
 ## Usage:
 
