@@ -42,7 +42,7 @@
 #         - Under 'excludes' tag regex expressions are specified. If one of defined expressions
 #             matches the file path, such file will be excluded from bundle. This tag can have
 #             no values.
-#         - When indenting lines, all indentation should strictly follow example.
+#         - When indenting lines, all indentation should strictly follow example  (2 spaces).
 #         - Note that all file paths should not contain | ? * < \" > ; symbols and all non
 #             [a-zA-Z0-9] symbols will be replaced by '_' symbol when indexed (does not affect
 #             original files).
