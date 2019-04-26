@@ -1,0 +1,20 @@
+function(assignBundle)
+    cmake_parse_arguments("" "" "TARGET;BUNDLE" "" "${ARGN}")
+    
+    get_property(bundles GLOBAL PROPERTY R_indexedBundles)
+    list(FIND bundles "${_BUNDLE}" pos)
+    if(${pos} EQUAL -1)
+        message(FATAL_ERROR "Bundle '${_BUNDLE}' does not exist.")
+        return()
+    endif()
+
+    get_property(targetBundle TARGET "${_TARGET}" PROPERTY R_bundle)
+    if(NOT "${targetBundle}" STREQUAL "")
+        message(FATAL_ERROR "Target '${_TARGET}' is already assigned a bundle ('${targetBundle}').")
+        return()
+    else()
+        set_property(TARGET "${_TARGET}" PROPERTY R_bundle "${_BUNDLE}")
+    endif()
+    
+    target_link_libraries("${_TARGET}" "R_${_BUNDLE}")
+endfunction()

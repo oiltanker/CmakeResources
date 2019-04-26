@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Oiltanker/Desktop/CmakeResources/build/_tests/simple/src/main.cpp
+resources.h
+C:/Users/Oiltanker/Desktop/CmakeResources/build/_tests/simple/src/resources.h
+iostream
+-
+string
+-
+fstream
+-
+
+_resources/bundle/bundle/include/resources.h
+

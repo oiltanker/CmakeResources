@@ -1,0 +1,6 @@
+C:/Users/Oiltanker/Desktop/CmakeResources/build/_tests/simple/build/CMakeFiles/simple.dir
+C:/Users/Oiltanker/Desktop/CmakeResources/build/_tests/simple/build/CMakeFiles/rebuild_cache.dir
+C:/Users/Oiltanker/Desktop/CmakeResources/build/_tests/simple/build/CMakeFiles/test.dir
+C:/Users/Oiltanker/Desktop/CmakeResources/build/_tests/simple/build/CMakeFiles/R_bundle.compile.dir
+C:/Users/Oiltanker/Desktop/CmakeResources/build/_tests/simple/build/CMakeFiles/R_bundle.dir
+C:/Users/Oiltanker/Desktop/CmakeResources/build/_tests/simple/build/CMakeFiles/edit_cache.dir

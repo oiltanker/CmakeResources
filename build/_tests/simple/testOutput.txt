@@ -1,0 +1,11 @@
+[HANDLER_OUTPUT] 
+Test project C:/Users/Oiltanker/Desktop/CmakeResources/build/_tests/simple/build
+
+    Start 1: produceOutput
+1/2 Test #1: produceOutput ....................   Passed    0.03 sec
+    Start 2: outputCompare
+2/2 Test #2: outputCompare ....................   Passed    0.05 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   0.09 sec

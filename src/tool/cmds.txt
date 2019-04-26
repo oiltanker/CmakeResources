@@ -1,0 +1,11 @@
+commands:
+  configure:
+    @CMAKE_COMMAND@ .
+        -G "@CMAKE_GENERATOR@"
+        -D "CMAKE_C_COMPILER=@CMAKE_C_COMPILER@"
+        -D "CMAKE_CXX_COMPILER=@CMAKE_CXX_COMPILER@"
+        -B "@R_toolDir@/build"
+  build:
+    @CMAKE_COMMAND@
+        --build "@R_toolDir@/build"
+        --config Release

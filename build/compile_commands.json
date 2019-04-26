@@ -1,0 +1,7 @@
+[
+{
+  "directory": "C:/Users/Oiltanker/Desktop/CmakeResources/build/examples/minTest",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe   @CMakeFiles/minTest.dir/includes_CXX.rsp -m64 -g   -o CMakeFiles\\minTest.dir\\src\\main.cpp.obj -c C:\\Users\\Oiltanker\\Desktop\\CmakeResources\\examples\\minTest\\src\\main.cpp",
+  "file": "C:/Users/Oiltanker/Desktop/CmakeResources/examples/minTest/src/main.cpp"
+}
+]

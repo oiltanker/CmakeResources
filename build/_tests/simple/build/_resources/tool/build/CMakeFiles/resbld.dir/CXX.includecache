@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Oiltanker/Desktop/CmakeResources/build/_tests/simple/build/_resources/tool/src/resbld.cpp
+vector
+-
+map
+-
+fstream
+-
+string
+-
+cmath
+-
+stack
+-
+cstdlib
+-
+thread
+-
+algorithm
+-
+iostream
+-
+cstdio
+-
+

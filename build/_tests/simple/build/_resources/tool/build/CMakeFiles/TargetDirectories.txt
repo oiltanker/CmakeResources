@@ -1,0 +1,3 @@
+C:/Users/Oiltanker/Desktop/CmakeResources/build/_tests/simple/build/_resources/tool/build/CMakeFiles/resbld.dir
+C:/Users/Oiltanker/Desktop/CmakeResources/build/_tests/simple/build/_resources/tool/build/CMakeFiles/edit_cache.dir
+C:/Users/Oiltanker/Desktop/CmakeResources/build/_tests/simple/build/_resources/tool/build/CMakeFiles/rebuild_cache.dir

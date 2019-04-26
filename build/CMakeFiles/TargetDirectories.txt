@@ -1,0 +1,7 @@
+C:/Users/Oiltanker/Desktop/CmakeResources/build/CMakeFiles/cresScript.dir
+C:/Users/Oiltanker/Desktop/CmakeResources/build/CMakeFiles/rebuild_cache.dir
+C:/Users/Oiltanker/Desktop/CmakeResources/build/CMakeFiles/test.dir
+C:/Users/Oiltanker/Desktop/CmakeResources/build/CMakeFiles/edit_cache.dir
+C:/Users/Oiltanker/Desktop/CmakeResources/build/tests/CMakeFiles/rebuild_cache.dir
+C:/Users/Oiltanker/Desktop/CmakeResources/build/tests/CMakeFiles/test.dir
+C:/Users/Oiltanker/Desktop/CmakeResources/build/tests/CMakeFiles/edit_cache.dir

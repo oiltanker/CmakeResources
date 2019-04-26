@@ -1,0 +1,4 @@
+Scanning dependencies of target resbld
+[ 50%] Building CXX object CMakeFiles/resbld.dir/src/resbld.cpp.obj
+[100%] Linking CXX executable ..\bin\resbld.exe
+[100%] Built target resbld

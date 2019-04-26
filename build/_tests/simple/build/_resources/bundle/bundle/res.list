@@ -1,0 +1,13 @@
+resources:
+  R/bundle/f1/f1_1_txt:
+    variable: f1_1_txt
+    binaryVaraible: R_bundle_f1_f1_1_txt
+  R/bundle/f1/f1_2_txt:
+    variable: f1_2_txt
+    binaryVaraible: R_bundle_f1_f1_2_txt
+  R/bundle/f2/f21/f2_f21_1_txt:
+    variable: f2_f21_1_txt
+    binaryVaraible: R_bundle_f2_f21_f2_f21_1_txt
+  R/bundle/f2/f22/f2_f22_1_txt:
+    variable: f2_f22_1_txt
+    binaryVaraible: R_bundle_f2_f22_f2_f22_1_txt
