@@ -1,3 +1,0 @@
-produceOutput 8 0.00328704
-outputCompare 6 0.00824162
----

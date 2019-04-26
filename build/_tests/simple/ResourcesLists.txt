@@ -1,3 +1,0 @@
-bundle:
-  description: Test bundle
-  directory: ./bundle

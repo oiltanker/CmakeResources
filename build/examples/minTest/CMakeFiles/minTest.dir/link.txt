@@ -1,3 +1,0 @@
-"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\minTest.dir/objects.a
-C:\TDM-GCC-64\bin\ar.exe cr CMakeFiles\minTest.dir/objects.a @CMakeFiles\minTest.dir\objects1.rsp
-C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe -m64 -g   -Wl,--whole-archive CMakeFiles\minTest.dir/objects.a -Wl,--no-whole-archive  -o bin\minTest.exe -Wl,--out-implib,libminTest.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\minTest.dir\linklibs.rsp

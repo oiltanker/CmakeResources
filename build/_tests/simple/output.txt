@@ -1,8 +1,0 @@
-RES: 'R.bundle.f1.f1_1_txt':
-FILE: f1_1.txt
-RES: 'R.bundle.f1.f1_2_txt':
-FILE: f1_2.txt
-RES: 'R.bundle.f2.f21.f2_f21_1_txt':
-FILE: f2_f21_1.txt
-RES: 'R.bundle.f2.f22.f2_f22_1_txt':
-FILE: f2_f22_1.txt
