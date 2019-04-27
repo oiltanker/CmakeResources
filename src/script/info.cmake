@@ -113,7 +113,5 @@
 #         |const rc::Resource& file_2 = rc::R.folder_1.file_2;
 #         |const rc::Resource& file_3 = rc::R.folder_1.file_3;
 #         |const rc::Resource& file_4 = rc::R.folder_2.folder_3.file_4;
-# 
-# TODO:
-#     Consider supporting multiple bundles
+
 set(R_version 1.0.0)

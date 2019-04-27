@@ -1,0 +1,3 @@
+Consider supporting multiple bundles
+    - Redo namespace or _ResourceStructure to avoid naming conflicts
+    - Add check to avoid adding alreadi added bundle
