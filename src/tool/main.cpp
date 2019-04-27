@@ -18,6 +18,7 @@
 #include <cstdlib>
 #include <thread>
 #include <algorithm>
+#include <mutex>
 
 #include <iostream>
 #include <cstdio>
@@ -170,6 +171,14 @@ struct RTNode {
         resources.push_back(res);
     }
 };
+
+mutex isFree;
+bool removeInThread(const char* filepath) {
+    isFree.lock();
+    bool result = remove(filepath);
+    isFree.unlock();
+    return result;
+}
 
 bool processTask(const int argc, char** argv, Task& task) {
     if (argc < 2) {
@@ -667,7 +676,7 @@ void generateResource(bool* result, const string& command, const string& namespa
         cerr << "Error while compiling resource.\n";
         err = true;
     }
-    if (remove(task.source.c_str()) != 0) {
+    if (removeInThread(task.source.c_str()) != 0) {
         cerr << "Error removing resource source.\n";
         err = true;
     }
@@ -804,8 +813,9 @@ bool generateLibrarySource(const Task& task, const Config& config, const vector<
                 source_file << src_tab << "Resource("
                     << "&_binary_" << res.binary_variable << "_begin_, "
                     << "_binary_" << res.binary_variable << "_size_)";
-                if (&res != &cats.back()->resources.back()) source_file << ",\n";
-                else source_file << "\n";
+                //if (&res != &cats.back()->resources.back()) source_file << ",\n";
+                //else source_file << "\n";
+                source_file << ",\n";
             }
             res_ptr.top() = 0;
         } else if (res_ptr.top() == cats.back()->categories.size()) {

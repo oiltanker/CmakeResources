@@ -18,4 +18,9 @@ function(addProjectTest projetName)
 endfunction()
 
 addProjectTest(simple)
-set_tests_properties(simple PROPERTIES DEPENDS cresScript)
+addProjectTest(heavy)
+set_tests_properties(
+    simple heavy
+    PROPERTIES
+        DEPENDS cresScript
+)
