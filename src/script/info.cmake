@@ -1,4 +1,4 @@
-# CmakeResources (version 1.0.0)
+# CmakeResources (version 1.0.1)
 #
 # Usage:
 #    CmakeResporces works by reading resource configuration files named 'ResourcesLists.txt'.
@@ -43,9 +43,10 @@
 #             matches the file path, such file will be excluded from bundle. This tag can have
 #             no values.
 #         - When indenting lines, all indentation should strictly follow example  (2 spaces).
-#         - Note that all file paths should not contain | ? * < \" > ; symbols and all non
-#             [a-zA-Z0-9] symbols will be replaced by '_' symbol when indexed (does not affect
-#             original files).
+# 
+#     * Note that all file paths should not contain | ? * < \" > ; symbols and all non
+#        [a-zA-Z0-9] symbols will be replaced by '_' symbol and files beggining with digin
+#        will also prefixed with `_` when indexed (does not affect original files).
 # 
 # 
 #    To index bundles a CmakeResporces script should be included into main CMakeLists file and
@@ -59,7 +60,8 @@
 # 
 #    After configuration a 'resources.h' header file will be generated and added to the targets
 #     includes which can consequently be included in the code.
-#    Note taht only one bundel can be added to the one target.
+# 
+#     * Note that only one bundel can be added to the one target.
 # 
 # 
 #    After everything is configured and resources header file is included into the code.
@@ -104,14 +106,14 @@
 #         |                Resource file_4;
 #         |            } folder_3;
 #         |        } folder_2;
-#         |    } bundle;
+#         |    } <bundle>;
 #         |} extern const R;
 # 
 #    So all the files, when referenced would look like:
 # 
-#         |const rc::Resource& file_1 = rc::R.file_1;
-#         |const rc::Resource& file_2 = rc::R.folder_1.file_2;
-#         |const rc::Resource& file_3 = rc::R.folder_1.file_3;
-#         |const rc::Resource& file_4 = rc::R.folder_2.folder_3.file_4;
+#         |const rc::Resource& file_1 = rc::R.<bundle>.file_1;
+#         |const rc::Resource& file_2 = rc::R.<bundle>.folder_1.file_2;
+#         |const rc::Resource& file_3 = rc::R.<bundle>.folder_1.file_3;
+#         |const rc::Resource& file_4 = rc::R.<bundle>.folder_2.folder_3.file_4;
 
-set(R_version 1.0.0)
+set(R_version 1.0.1)

@@ -172,11 +172,31 @@ struct RTNode {
     }
 };
 
-mutex isFree;
+bool tryRemove(const char* filepath) {
+    bool result = false;
+    for(int i = 0; (i < 3) && !result; i++) {
+        result = remove(filepath) == 0;
+        if(!result) {
+            ifstream is(filepath);
+            result = !is.good();
+            is.close();
+        }
+    }
+    return result;
+}
+mutex removeLock;
 bool removeInThread(const char* filepath) {
-    isFree.lock();
-    bool result = remove(filepath);
-    isFree.unlock();
+    removeLock.lock();
+    bool result = tryRemove(filepath);
+    removeLock.unlock();
+    return result;
+}
+
+mutex systemLock;
+int systemInThread(const char* cmd) {
+    systemLock.lock();
+    int result = system(cmd);
+    systemLock.unlock();
     return result;
 }
 
@@ -672,12 +692,12 @@ void generateResource(bool* result, const string& command, const string& namespa
     in.close(); out.close();
 
     bool err = false;
-    if (system(command.c_str()) != 0) {
-        cerr << "Error while compiling resource.\n";
+    if (systemInThread(command.c_str()) != 0) {
+        cerr << "Error while compiling resource:\n    CMD: " << command << ".\n";
         err = true;
     }
-    if (removeInThread(task.source.c_str()) != 0) {
-        cerr << "Error removing resource source.\n";
+    if (!removeInThread(task.source.c_str())) {
+        cerr << "Error removing resource source '" << task.source << "'.\n";
         err = true;
     }
     *result = !err; return;
@@ -699,7 +719,7 @@ bool executeTasks(const Config& config, const vector<ObjTask>& tasks) {
     for (size_t i = 0 ; i < results.size(); i++) {
         if(!*results[i]) {
             cout << "Generation of " << tasks[i].file << " failed.\n";
-            remove(tasks[i].object.c_str());
+            tryRemove(tasks[i].object.c_str());
             result = false;
         }
     }
@@ -813,8 +833,6 @@ bool generateLibrarySource(const Task& task, const Config& config, const vector<
                 source_file << src_tab << "Resource("
                     << "&_binary_" << res.binary_variable << "_begin_, "
                     << "_binary_" << res.binary_variable << "_size_)";
-                //if (&res != &cats.back()->resources.back()) source_file << ",\n";
-                //else source_file << "\n";
                 source_file << ",\n";
             }
             res_ptr.top() = 0;
@@ -859,8 +877,7 @@ int main(int argc, char** argv) {
         case TaskType::remove: {
             bool err = false;
             for (string file: task.remove_files) {
-                if (remove(file.c_str()) != 0)
-                    err = true;
+                if (!tryRemove(file.c_str())) err = true;
             }
             if (err) {
                 cerr << "Was unable to delete all files.";

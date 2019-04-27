@@ -34,7 +34,7 @@ excludes:
 - Under `excludes` tag regex expressions are specified. If one of defined expressions matches the file path, such file will be excluded from bundle. This tag can have no values.
 - When indenting lines, all indentation should strictly follow example (2 spaces).
 
-> **Note** that all file paths should not contain `| ? * < \" > ;` symbols and all non `[a-zA-Z0-9]` symbols will be replaced by `_` symbol when indexed (does not affect original files).
+> **Note** that all file paths should not contain `| ? * < \" > ;` symbols and all non `[a-zA-Z0-9]` symbols will be replaced by `_` symbol and files beggining with digin will also prefixed with `_` when indexed (does not affect original files).
 
 ### Executing indexing
 To index bundles a CmakeResporces script should be included into main CMakeLists file and somewhere in the main CMakeLists file a call to the `indexResources` function should be made.
@@ -87,13 +87,13 @@ struct _ResourcesStructure{
                 Resource file_4;
             } folder_3;
         } folder_2;
-    } bundle;
+    } <bundle>;
 } extern const R;
 ```
 So all the files, when referenced would look like:
 ```c++
-const rc::Resource& file_1 = rc::R.file_1;
-const rc::Resource& file_2 = rc::R.folder_1.file_2;
-const rc::Resource& file_3 = rc::R.folder_1.file_3;
-const rc::Resource& file_4 = rc::R.folder_2.folder_3.file_4;
+const rc::Resource& file_1 = rc::R.<bundle>.file_1;
+const rc::Resource& file_2 = rc::R.<bundle>.folder_1.file_2;
+const rc::Resource& file_3 = rc::R.<bundle>.folder_1.file_3;
+const rc::Resource& file_4 = rc::R.<bundle>.folder_2.folder_3.file_4;
 ```

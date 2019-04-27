@@ -1,8 +1,20 @@
-RES: 'R.bundle.f1.f1_1_txt':
-FILE: f1_1.txt
-RES: 'R.bundle.f1.f1_2_txt':
-FILE: f1_2.txt
-RES: 'R.bundle.f2.f21.f2_f21_1_txt':
-FILE: f2_f21_1.txt
-RES: 'R.bundle.f2.f22.f2_f22_1_txt':
-FILE: f2_f22_1.txt
+RES: 'R.bundle.f1._01_txt':
+R/f1/1
+RES: 'R.bundle.f1._02_txt':
+R/f1/2
+RES: 'R.bundle.f1._03_txt':
+R/f1/3
+RES: 'R.bundle.f1._04_txt':
+R/f1/4
+RES: 'R.bundle.f2._05_txt':
+R/f2/5
+RES: 'R.bundle.f2._06_txt':
+R/f2/6
+RES: 'R.bundle.f2.f21._07_txt':
+R/f2/f21/7
+RES: 'R.bundle.f2.f21._08_txt':
+R/f2/f21/8
+RES: 'R.bundle.f2.f22._09_txt':
+R/f2/f22/9
+RES: 'R.bundle.f2.f22._10_txt':
+R/f2/f22/10
