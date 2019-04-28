@@ -1,5 +1,9 @@
 # CmakeResources
 
+## Description
+
+CmakeResources is the project dedecated to developing accordingly named script that provides functionality that helps with creating **/** compiling **/** coding resource bundels for CMake **/** C++.
+
 ## Usage:
 
 ### Main `ResourcesLists` file
@@ -60,7 +64,7 @@ struct Resource {
 ```
 Every resource can be accessed from the bundle resource structure, for example:
 ```c++
-    const rc::Resource& res = rc::R.<category_name>.<filename>;
+const rc::Resource& res = rc::R.<category_name>.<filename>;
 ```
 Here `R` is the bundle resources root, `<category_name>` is name of sub-folder in the bundle directory. If file is nested more than one sub-folder deep, several `<category_name>`'s must be referenced by `.` before file can be referenced. Consider following example:
 ```
