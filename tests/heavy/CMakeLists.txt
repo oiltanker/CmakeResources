@@ -6,6 +6,8 @@ include("${CMAKE_SOURCE_DIR}/CmakeResources.cmake")
 
 add_executable(heavy "${CMAKE_SOURCE_DIR}/src/main.cpp")
 set_target_properties(heavy PROPERTIES
+    CXX_STANDARD 11
+    CXX_STANDARD_REQUIRED TRUE
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin"
 )
 indexResources()
