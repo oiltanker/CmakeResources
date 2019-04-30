@@ -4,6 +4,9 @@
 #     R_toolProjectCmds - resources tool cmake project commands
 #     R_confTemplate    - template bundle configuration
 
+# Uncomment if developing tool source
+# set(R_toolRecompile FALSE CACHE INTERNAL "Flag specifying if tool must be recompiled." FORCE)
+
 # Configuration functions
 set(R_scriptFile "${CMAKE_CURRENT_LIST_FILE}")
 
@@ -28,7 +31,7 @@ function(createConfigurationTemplate)
     file(WRITE "${R_bundleDir}/res_template.conf" "${template}")
 endfunction()
 
-if(NOT "${R_versionCheck}" STREQUAL "${R_version}")
+if((NOT "${R_versionCheck}" STREQUAL "${R_version}") OR ${R_toolRecompile})
     set(R_versionCheck ${R_version} CACHE INTERNAL "Resources version check" FORCE)
     set(R_rootDir "${CMAKE_BINARY_DIR}/_resources"
         CACHE INTERNAL "Resources root directory" FORCE)
@@ -120,7 +123,9 @@ if(NOT "${R_versionCheck}" STREQUAL "${R_version}")
         file(REMOVE "${confErrFile}")
         file(REMOVE "${bldErrFile}")
         message(STATUS "Tool creation successful.")
+        set(R_toolRecompile FALSE CACHE INTERNAL "Flag specifying if tool must be recompiled." FORCE)
     else()
         message(FATAL_ERROR "Tool creation failed.")
+        set(R_toolRecompile TRUE CACHE INTERNAL "Flag specifying if tool must be recompiled." FORCE)
     endif()
 endif()
