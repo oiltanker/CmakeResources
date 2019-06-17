@@ -143,7 +143,7 @@ function(updateCreateBundle)
         set(anyChanges TRUE)
     endif()
 
-    if(${anyChanges} OR (NOT EXISTS "${resourceDir}/include/resources.h"))
+    if("${anyChanges}" OR (NOT EXISTS "${resourceDir}/include/resources.h"))
         message(STATUS "Generating includes for '${bundle}' bundle...")
 
         set(outLogFile "${resourceDir}/out.log")

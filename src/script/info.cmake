@@ -116,4 +116,4 @@
 #         |const rc::Resource& file_3 = rc::R.<bundle>.folder_1.file_3;
 #         |const rc::Resource& file_4 = rc::R.<bundle>.folder_2.folder_3.file_4;
 
-set(R_version 1.0.1)
+set(R_version 1.0.2)

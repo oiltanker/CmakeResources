@@ -31,7 +31,7 @@ function(createConfigurationTemplate)
     file(WRITE "${R_bundleDir}/res_template.conf" "${template}")
 endfunction()
 
-if((NOT "${R_versionCheck}" STREQUAL "${R_version}") OR ${R_toolRecompile})
+if((NOT "${R_versionCheck}" STREQUAL "${R_version}") OR "${R_toolRecompile}")
     set(R_versionCheck ${R_version} CACHE INTERNAL "Resources version check" FORCE)
     set(R_rootDir "${CMAKE_BINARY_DIR}/_resources"
         CACHE INTERNAL "Resources root directory" FORCE)
@@ -86,6 +86,7 @@ if((NOT "${R_versionCheck}" STREQUAL "${R_version}") OR ${R_toolRecompile})
     execute_process(
         COMMAND ${CMAKE_COMMAND} .
             -G "${CMAKE_GENERATOR}"
+            -D "CMAKE_MAKE_PROGRAM=${CMAKE_MAKE_PROGRAM}"
             -D "CMAKE_C_COMPILER=${CMAKE_C_COMPILER}"
             -D "CMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}"
             -B "${R_toolDir}/build"
@@ -108,7 +109,7 @@ if((NOT "${R_versionCheck}" STREQUAL "${R_version}") OR ${R_toolRecompile})
         file(READ "${confErrFile}" confErr)
         if(NOT "${confErr}" STREQUAL "")
             set(errorOccured TRUE)
-            message(SATUS "Tool configuration error:\n\n${confErr}")
+            message(STATUS "Tool configuration error:\n\n${confErr}")
         endif()
     endif()
     if(EXISTS "${bldErrFile}")

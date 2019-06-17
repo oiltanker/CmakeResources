@@ -11,8 +11,14 @@ function(addProjectTest projetName)
             -D "testsBinDir=${testsBinDir}"
             -D "testName=${projetName}"
             -D "cresScriptFile=${cresScriptFile}"
-            -D "CMAKE_GENERATOR=${CMAKE_GENERATOR}"
+
+            -D "CMAKE_COMMAND=${CMAKE_COMMAND}"
             -D "CMAKE_CTEST_COMMAND=${CMAKE_CTEST_COMMAND}"
+            -D "CMAKE_GENERATOR=${CMAKE_GENERATOR}"
+            -D "CMAKE_MAKE_PROGRAM=${CMAKE_MAKE_PROGRAM}"
+            -D "CMAKE_C_COMPILER=${CMAKE_C_COMPILER}"
+            -D "CMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}"
+
             -P "./test.cmake"
     )
 endfunction()

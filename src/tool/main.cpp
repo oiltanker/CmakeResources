@@ -131,6 +131,10 @@ struct Yvalue {
             case YVType::array:
                 arr = val.arr;
                 return *this;
+            case YVType::none:
+                return *this;
+            default:
+                throw "Unknown YVType.";
         }
     }
 
