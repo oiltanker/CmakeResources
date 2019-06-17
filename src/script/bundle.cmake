@@ -16,5 +16,5 @@ function(assignBundle)
         set_property(TARGET "${_TARGET}" PROPERTY R_bundle "${_BUNDLE}")
     endif()
     
-    target_link_libraries("${_TARGET}" "R_${_BUNDLE}")
+    target_link_libraries("${_TARGET}" PRIVATE "R_${_BUNDLE}")
 endfunction()
