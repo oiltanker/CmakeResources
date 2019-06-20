@@ -14,7 +14,7 @@ add_custom_command(
         -P "${CMAKE_SOURCE_DIR}/src/buildScript.cmake"
     VERBATIM
 )
-add_custom_target(cresScript DEPENDS "${cresScriptFile}")
+add_custom_target(cresScript ALL DEPENDS "${cresScriptFile}")
 
 enable_testing()
 add_subdirectory(tests)

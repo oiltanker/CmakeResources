@@ -21,13 +21,11 @@ function(addProjectTest projetName)
 
             -P "./test.cmake"
     )
+    set_tests_properties( "${projetName}" PROPERTIES
+        DEPENDS cresScript
+    )
 endfunction()
 
 addProjectTest(simple)
 addProjectTest(heavy)
 addProjectTest(various)
-set_tests_properties(
-    simple heavy various
-    PROPERTIES
-        DEPENDS cresScript
-)
