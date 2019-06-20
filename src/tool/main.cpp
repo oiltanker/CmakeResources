@@ -4,6 +4,23 @@
  * Do not change as it is used to generate resources for other targets
  * If you change the source it will affect your project resources
  * 
+ * Usage (CLI):
+ *     - rm <file1> [<file2> ...] - removes files.
+ * 
+ *     - gen obj -in <resource list file> -out-dir <path> -conf <bundle config>
+ *         + <resource list file> - resource list that specifies SOME resource entries that
+ *                                  NEED to be compiled into respective object files.
+ *         + <path>               - directory path to which generated object file will be placed.
+ *         + <bundle config>      - bundle configuration file.
+ * 
+ *     - gen lib -in <resource ist file> -out-dir <path> -conf <bundle config>
+ *         + <resource list file> - resource list that specifies ALL resource entries that
+ *                                  are present in a bundle.
+ *         + <path>               - directory path to which MUST contain 'include' and 'src'
+ *                                  directories that will contain generated header and source
+ *                                  files that represent the bundle.
+ *         + <bundle config>      - bundle configuration file.
+ * 
  * Variables:
  *     R_version - CmakeResources version
  */
