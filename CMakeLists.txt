@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.14)
-
 project(cmake_resources VERSION 1.0.0)
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/Modules")
+
+include(ConanSetup)
 
 set(cresScriptFile "${CMAKE_SOURCE_DIR}/bin/CmakeResources.cmake")
 file(GLOB_RECURSE files "${CMAKE_SOURCE_DIR}/src/*")
@@ -18,3 +20,4 @@ add_custom_target(cresScript ALL DEPENDS "${cresScriptFile}")
 
 enable_testing()
 add_subdirectory(tests)
+add_subdirectory(src/new_tool)

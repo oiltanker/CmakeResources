@@ -1,0 +1,7 @@
+[requires]
+args/6.2.2@pavel-belikov/stable
+
+[options]
+
+[generators]
+cmake

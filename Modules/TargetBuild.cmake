@@ -1,0 +1,27 @@
+function(copyPostBuild target)
+    cmake_parse_arguments("" "" "" "FILES;GLOBS" "${ARGN}")
+    if("${_GLOBS}" EQUAL "")
+        set(_GLOBS "*")
+    endif()
+
+    foreach(src IN LISTS _FILES)
+        if(EXISTS "${src}")
+            if(IS_DIRECTORY "${src}")
+                set(globs "")
+                foreach(glob IN LISTS _GLOBS)
+                    list(APPEND globs "${src}/${glob}")
+                endforeach()
+
+                file(GLOB_RECURSE files LIST_DIRECTORIES false RELATIVE "${src}" ${globs})
+                foreach(file IN LISTS files)
+                    add_custom_command(TARGET ${target} POST_BUILD
+                        COMMAND "${CMAKE_COMMAND}" -E copy "${src}/${file}" "$<TARGET_FILE_DIR:${target}>/${file}")
+                endforeach()
+            else()
+                get_filename_component(name "${src}" NAME)
+                add_custom_command(TARGET ${target} POST_BUILD
+                    COMMAND "${CMAKE_COMMAND}" -E copy "${src}" "$<TARGET_FILE_DIR:${target}>/${name}")
+            endif()
+        endif()
+    endforeach()
+endfunction()
