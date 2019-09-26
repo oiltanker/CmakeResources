@@ -1,9 +1,9 @@
 Consider supporting multiple bundles
     - Redo namespace or _ResourceStructure to avoid naming conflicts
-    - Add check to avoid adding alreadi added bundle
+    - Add check to avoid adding already added bundle
 
-Move towards froks and CreateProcess instead of system() as it is not thread safe
+Move towards forks and CreateProcess instead of system() as it is not thread safe
  when executing commands. Although, it is better to find a more cross-platform
  solution. Otherwise it is a lot of system-dependent code.
 
-Fix heavy test falure, our find a vay of combation large output size.
+Fix heavy test failure, or find a way of combining large output size.

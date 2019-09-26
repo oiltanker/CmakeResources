@@ -2,12 +2,12 @@
 
 ## Description
 
-CmakeResources is the project dedecated to developing accordingly named script that provides functionality that helps with creating **/** compiling **/** coding resource bundels for CMake **/** C++.
+CmakeResources is the project dedecated to developing accordingly named script that provides functionality that helps with creating **/** compiling **/** coding resource bundles for CMake **/** C++.
 
 ## Usage:
 
 ### Main `ResourcesLists` file
-CmakeResporces works by reading resource configuration files named 'ResourcesLists.txt'. The main ResourcesLists file should be located in the CMake source directory. It shold contain all resource bundle defenitions, a resource bundle defenition should be as folows:
+CmakeResporces works by reading resource configuration files named 'ResourcesLists.txt'. The main ResourcesLists file should be located in the CMake source directory. It should contain all resource bundle definitions, a resource bundle definition should be as follows:
 ```YAML
 <bundle_name>:
   description: <bundle_description>
@@ -16,7 +16,7 @@ CmakeResporces works by reading resource configuration files named 'ResourcesLis
 - Name must follow CMake target naming limitations
 - Description can be any string, treat it as a comment
 - Directory must be a bundle directory, all bundle resource files/folders should be in this directory, as well as, bundle ResourcesLists file.
-- Name tag shold not be indented and `description` and `directory` tags should be indented by 2 spaces, not less, not more.
+- Name tag should not be indented and `description` and `directory` tags should be indented by 2 spaces, not less, not more.
 
 ### Bundle `ResourcesLists` file
 Bundle ResourcesLists file should be as follows:
@@ -33,12 +33,12 @@ excludes:
   [<regex_1>]
   [...]
 ```
-- Under `directories` tag search directory paths are specified. These are directories whose resource files will be indexed. All paths that begin with `./` will be treated as relative to the bundle direcory. If you want only to specify bundle direcory a path of `.` can be added.
+- Under `directories` tag search directory paths are specified. These are directories whose resource files will be indexed. All paths that begin with `./` will be treated as relative to the bundle directory. If you want only to specify bundle directory a path of `.` can be added.
 - Under `masks` tag globbing expressions are specified. These expressions will glob files in all of search directories. If you want only to glob all files a mask of `*` cab be added.
 - Under `excludes` tag regex expressions are specified. If one of defined expressions matches the file path, such file will be excluded from bundle. This tag can have no values.
 - When indenting lines, all indentation should strictly follow example (2 spaces).
 
-> **Note** that all file paths should not contain `| ? * < \" > ;` symbols and all non `[a-zA-Z0-9]` symbols will be replaced by `_` symbol and files beggining with digin will also prefixed with `_` when indexed (does not affect original files).
+> **Note** that all file paths should not contain `| ? * < \" > ;` symbols and all non `[a-zA-Z0-9]` symbols will be replaced by `_` symbol and files that begin with digit will also prefixed with `_` when indexed (does not affect original files).
 
 ### Executing indexing
 To index bundles a CmakeResporces script should be included into main CMakeLists file and somewhere in the main CMakeLists file a call to the `indexResources` function should be made.
@@ -53,7 +53,7 @@ After configuration a 'resources.h' header file will be generated and added to t
 > **Note** that only one bundle can be added to the one target.
 
 ### Coding
-After everything is configured and resources header file is included into the code. Everything is enclosed into `rc` namespace. All resource files are represented in the resource structure by size and begin varables.
+After everything is configured and resources header file is included into the code. Everything is enclosed into `rc` namespace. All resource files are represented in the resource structure by size and begin variables.
 ```c++
 struct Resource {
     const void* begin;

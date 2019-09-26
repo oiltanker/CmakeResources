@@ -3,8 +3,8 @@
 # Usage:
 #    CmakeResporces works by reading resource configuration files named 'ResourcesLists.txt'.
 #     The main ResourcesLists file should be located in the CMake source directory.
-#     It shold contain all resource bundle defenitions, a resource bundle defenition
-#     should be as folows:
+#     It should contain all resource bundle definitions, a resource bundle definition
+#     should be as follows:
 # 
 #         |<bundle_name>:
 #         |  description: <bundle_description>
@@ -14,7 +14,7 @@
 #         - Description can be any string, treat it as a comment
 #         - Directory must be a bundle directory, all bundle resource files/folders should be
 #             in this directory, as well as, bundle ResourcesLists file.
-#         - Name tag shold not be indented and 'description' and 'directory' tags should be
+#         - Name tag should not be indented and 'description' and 'directory' tags should be
 #              indented by 2 spaces, not less, not more.
 # 
 # 
@@ -34,8 +34,8 @@
 # 
 #         - Under 'directories' tag search directory paths are specified. These are directories
 #             whose resource files will be indexed. All paths that begin with './' will be
-#             treated as relative to the bundle direcory. If you want only to specify bundle
-#             direcory a path of '.' can be added.
+#             treated as relative to the bundle directory. If you want only to specify bundle
+#             directory a path of '.' can be added.
 #         - Under 'masks' tag globbing expressions are specified. These expressions will glob
 #             files in all of search directories. If you want only to glob all files a mask of
 #             '*' cab be added.
@@ -45,7 +45,7 @@
 #         - When indenting lines, all indentation should strictly follow example  (2 spaces).
 # 
 #     * Note that all file paths should not contain | ? * < \" > ; symbols and all non
-#        [a-zA-Z0-9] symbols will be replaced by '_' symbol and files beggining with digin
+#        [a-zA-Z0-9] symbols will be replaced by '_' symbol and files that begin with digit
 #        will also prefixed with `_` when indexed (does not affect original files).
 # 
 # 
@@ -61,12 +61,12 @@
 #    After configuration a 'resources.h' header file will be generated and added to the targets
 #     includes which can consequently be included in the code.
 # 
-#     * Note that only one bundel can be added to the one target.
+#     * Note that only one bundle can be added to the one target.
 # 
 # 
 #    After everything is configured and resources header file is included into the code.
 #     Everything is enclosed into 'rc' namespace. All resource files are represented in the
-#     resource structure by size and begin varables.
+#     resource structure by size and begin variables.
 # 
 #         |struct Resource {
 #         |    const void* begin;
