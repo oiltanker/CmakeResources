@@ -94,8 +94,9 @@ execute(
     ERROR "Unable to setup conan packages"
     STATUS "Conan installation output")
 
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+include("${CMAKE_BINARY_DIR}/conanbuildinfo.cmake")
 conan_basic_setup()
+include(VsCode)
 
 function(target_setup_conan target)
     cmake_parse_arguments("" "" "" "INCLUDES;COMP_DEFS;LIBRARIES;BIN_DIRS" "${ARGN}")
