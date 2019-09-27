@@ -1,5 +1,6 @@
 [requires]
 args/6.2.2@pavel-belikov/stable
+yaml-cpp/0.6.2@bincrafters/stable
 
 [options]
 
