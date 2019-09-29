@@ -16,9 +16,4 @@ find_file(cliSources
         main.cpp
     PATHS "${CMAKE_CURRENT_SOURCE_DIR}")
 add_executable(cres-cli ${cliSources})
-# target_setup_conan(cres-cli
-#     INCLUDES ${CONAN_INCLUDE_DIRS}
-#     COMP_DEFS ${CONAN_DEFINES}
-#     LIBRARIES ${CONAN_LIBS}
-#     BIN_DIRS ${CONAN_BIN_DIRS})
 target_link_libraries(cres-cli PRIVATE cres)

@@ -1,7 +1,11 @@
-#include <manager.hpp>
-#include <parser.hpp>
+#include "manager.hpp"
+#include "parser.hpp"
 
+#include <assert.h>
+#include <utility>
 #include <iostream>
+
+#include <yaml-cpp/yaml.h>
 
 using namespace std;
 
@@ -11,7 +15,7 @@ CompileCommand::CompileCommand(const string& str) {
 
     if (src == string::npos || obj == string::npos) {
         cerr << "Compile command misformed.\n";
-        throw;
+        throw ManageException("Malformed compilation command.");
     }
 
     if (src < obj) {
@@ -35,7 +39,27 @@ string CompileCommand::createFor(const string& src, const string& obj) const {
         return parts[0] + obj + parts[1] + src + parts[2];
 }
 
-bool Manager::openConfiguration(const std::string& filename) {
+void assertYamlMap(const YAML::Node& target, const vector<pair<const char*, YAML::NodeType::value>>& checks) {
+    assert(target.Type == YAML::NodeType::Map);
+    for(auto it = checks.begin(); it != checks.end(); it++)
+        assert(target[(*it).first].Type == (*it).second);
+}
+
+void Manager::openConfiguration(const std::string& filename) {
+    try {
+        YAML::Node y_config = YAML::LoadFile(filename);
+        assertYamlMap(y_config, {
+            {"version", YAML::NodeType::Scalar},
+            {"namespace", YAML::NodeType::Scalar},
+            {"compileCommand", YAML::NodeType::Scalar}
+        });
+
+        config.version = y_config["version"].as<string>();
+        config.namespace_ = y_config["namespace"].as<string>();
+        config.compile_command = CompileCommand(y_config["compileCommand"].as<string>());
+    } catch (exception e) {
+        throw;
+    }
     // Yvalue yaml;
     // if (!processYamlFIle(filepath, yaml)) {
     //     cerr << "Error processing config file '" << filepath << "'. Cannot proceed.\n";
@@ -90,8 +114,6 @@ bool Manager::openConfiguration(const std::string& filename) {
     //     }
     //     config.indices[pair.first] = pair.second.str;
     // }
-    return false;
 }
-bool Manager::openResourceList(const std::string& filename) {
-    return false;
+void Manager::openResourceList(const std::string& filename) {
 }

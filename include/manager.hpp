@@ -24,10 +24,21 @@ struct Config {
     std::map<std::string, std::string> indices;
 };
 
+struct ManageException : public exception {
+    const char* message = nullptr;
+    ManageException(const char* message) {
+        this->message = message;
+    }
+
+    const char* what () const throw () {
+        return message;
+    }
+};
+
 class Manager {
     public:
-        bool openConfiguration(const std::string& filename);
-        bool openResourceList(const std::string& filename);
+        void openConfiguration(const std::string& filename);
+        void openResourceList(const std::string& filename);
 
     private:
         Config config;
