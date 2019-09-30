@@ -5,6 +5,14 @@
 #include <map>
 #include <vector>
 
+class ManageException: public std::exception {
+public:
+    ManageException(const char* message);
+    const char* what () const throw ();
+private:
+    const char* message = nullptr;
+};
+
 class CompileCommand {
 public:
     CompileCommand() {}
@@ -21,18 +29,14 @@ struct Config {
     std::string version;
     std::string namespace_;
     CompileCommand compile_command;
-    std::map<std::string, std::string> indices;
 };
+struct ResourceIndex {
+    std::string bundle_name;
+    std::string c_name;
+    std::string cxx_name;
+    std::string filename;
 
-struct ManageException : public exception {
-    const char* message = nullptr;
-    ManageException(const char* message) {
-        this->message = message;
-    }
-
-    const char* what () const throw () {
-        return message;
-    }
+    ResourceIndex(std::string bundle_name, std::string root, std::string filename);
 };
 
 class Manager {

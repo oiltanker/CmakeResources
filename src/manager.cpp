@@ -3,11 +3,31 @@
 
 #include <assert.h>
 #include <utility>
+#include <filesystem>
 #include <iostream>
 
 #include <yaml-cpp/yaml.h>
 
 using namespace std;
+namespace fs = filesystem;
+
+ManageException::ManageException(const char* message) {
+    this->message = message;
+}
+
+const char* ManageException::what () const throw () {
+    return message;
+}
+
+ResourceIndex::ResourceIndex(string bundle_name, string root, string filename) {
+    this->bundle_name = bundle_name;
+    this->filename = filename;
+
+    auto root_path = fs::path(root);
+    auto file_path = fs::path(filename);
+    auto rel_path = fs::relative(file_path, root_path);
+    
+}
 
 CompileCommand::CompileCommand(const string& str) {
     size_t src = str.find("<SRC>");
@@ -40,12 +60,13 @@ string CompileCommand::createFor(const string& src, const string& obj) const {
 }
 
 void assertYamlMap(const YAML::Node& target, const vector<pair<const char*, YAML::NodeType::value>>& checks) {
-    assert(target.Type == YAML::NodeType::Map);
+    assert(target.Type() == YAML::NodeType::Map);
     for(auto it = checks.begin(); it != checks.end(); it++)
-        assert(target[(*it).first].Type == (*it).second);
+        assert(target[(*it).first].Type() == (*it).second);
 }
 
 void Manager::openConfiguration(const std::string& filename) {
+    string version, namespace_, command;
     try {
         YAML::Node y_config = YAML::LoadFile(filename);
         assertYamlMap(y_config, {
@@ -54,12 +75,15 @@ void Manager::openConfiguration(const std::string& filename) {
             {"compileCommand", YAML::NodeType::Scalar}
         });
 
-        config.version = y_config["version"].as<string>();
-        config.namespace_ = y_config["namespace"].as<string>();
-        config.compile_command = CompileCommand(y_config["compileCommand"].as<string>());
+        version = y_config["version"].as<string>();
+        namespace_ = y_config["namespace"].as<string>();
+        command = y_config["compileCommand"].as<string>();
     } catch (exception e) {
-        throw;
+        throw ManageException("Malformed or different version configuration file.");
     }
+    config.version = version;
+    config.namespace_ = namespace_;
+    config.compile_command = CompileCommand(command);
     // Yvalue yaml;
     // if (!processYamlFIle(filepath, yaml)) {
     //     cerr << "Error processing config file '" << filepath << "'. Cannot proceed.\n";
